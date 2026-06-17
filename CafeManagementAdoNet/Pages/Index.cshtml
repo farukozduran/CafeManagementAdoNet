@@ -1,0 +1,110 @@
+﻿@page
+@model IndexModel
+
+@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<div class="cafe-page">
+    <div class="cafe-container">
+
+        <section class="cafe-hero">
+            <div>
+                <div class="cafe-kicker">☕ Cafe Management</div>
+                <h1>Hoş Geldiniz</h1>
+                <p>
+                    ADO.NET ve Razor Pages kullanılarak hazırlanmış bu yönetim paneliyle
+                    ürünleri, çalışanları ve giderleri kolayca yönetebilirsin.
+                </p>
+            </div>
+
+            <div class="cafe-hero-actions">
+                <a asp-page="/Products/Index" class="cafe-btn cafe-btn-primary">
+                    Ürünleri Gör
+                </a>
+                <a asp-page="/Expenses/Index" class="cafe-btn cafe-btn-soft">
+                    Giderleri İncele
+                </a>
+            </div>
+        </section>
+
+        <section class="home-panel-grid">
+
+            <a asp-page="/Products/Index" class="home-panel-card">
+                <div class="home-panel-icon">▣</div>
+                <div>
+                    <h3>Ürün Yönetimi</h3>
+                    <p>
+                        Kafedeki ürünleri listele, yeni ürün ekle, stok ve fiyat bilgilerini düzenle.
+                    </p>
+                </div>
+                <span class="home-panel-link">Ürünlere Git →</span>
+            </a>
+
+            <a asp-page="/Employees/Index" class="home-panel-card">
+                <div class="home-panel-icon">◉</div>
+                <div>
+                    <h3>Çalışan Yönetimi</h3>
+                    <p>
+                        Çalışan kayıtlarını görüntüle, yeni personel ekle ve mevcut bilgileri güncelle.
+                    </p>
+                </div>
+                <span class="home-panel-link">Çalışanlara Git →</span>
+            </a>
+
+            <a asp-page="/Expenses/Index" class="home-panel-card">
+                <div class="home-panel-icon">₺</div>
+                <div>
+                    <h3>Gider Takibi</h3>
+                    <p>
+                        Kafeye ait giderleri kaydet, düzenle ve finansal kayıtları düzenli tut.
+                    </p>
+                </div>
+                <span class="home-panel-link">Giderlere Git →</span>
+            </a>
+
+        </section>
+
+        <section class="cafe-card home-info-card">
+            <div class="cafe-card-header">
+                <div>
+                    <h2 class="cafe-card-title">Panel Özeti</h2>
+                    <p class="cafe-card-subtitle">
+                        Bu uygulama üç bağımsız tablo üzerinden temel CRUD işlemlerini gösterir.
+                    </p>
+                </div>
+            </div>
+
+            <div class="cafe-card-body">
+                <div class="home-feature-grid">
+
+                    <div class="home-feature-item">
+                        <span class="home-feature-number">01</span>
+                        <h4>ADO.NET Kullanımı</h4>
+                        <p>
+                            Veritabanı işlemleri SqlConnection, SqlCommand ve SqlDataReader ile yapılır.
+                        </p>
+                    </div>
+
+                    <div class="home-feature-item">
+                        <span class="home-feature-number">02</span>
+                        <h4>Razor Pages Yapısı</h4>
+                        <p>
+                            Her sayfanın kendi .cshtml ve .cshtml.cs dosyası bulunur.
+                        </p>
+                    </div>
+
+                    <div class="home-feature-item">
+                        <span class="home-feature-number">03</span>
+                        <h4>Bağımsız Tablolar</h4>
+                        <p>
+                            Products, Employees ve Expenses tabloları birbirinden bağımsız çalışır.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
