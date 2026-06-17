@@ -16,14 +16,31 @@ namespace CafeManagementAdoNet.Pages.Expenses
 
         public List<Expense> Expenses { get; set; } = new List<Expense>();
 
+        [BindProperty(SupportsGet = true)]
+        public string? SearchTerm { get; set; }
+
         public void OnGet()
         {
+            string searchValue = SearchTerm?.Trim() ?? "";
+            string searchPattern = "%" + searchValue + "%";
+
             using SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
 
-            string query = "SELECT ExpenseId, ExpenseTitle, Amount, ExpenseDate, Description FROM Expenses ORDER BY ExpenseId DESC";
+            string query = @"
+                SELECT ExpenseId, ExpenseTitle, Amount, ExpenseDate, Description
+                FROM Expenses
+                WHERE 
+                    @SearchValue = ''
+                    OR ExpenseTitle LIKE @SearchPattern
+                    OR Description LIKE @SearchPattern
+                ORDER BY ExpenseId DESC";
 
             using SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@SearchValue", searchValue);
+            command.Parameters.AddWithValue("@SearchPattern", searchPattern);
+
             using SqlDataReader reader = command.ExecuteReader();
 
             while (reader.Read())

@@ -15,16 +15,32 @@ namespace CafeManagementAdoNet.Pages.Products
         }
 
         public List<Product> Products { get; set; } = new List<Product>();
+
+        [BindProperty(SupportsGet = true)]
+        public string? SearchTerm { get; set; }
         public void OnGet()
         {
+
+            string searchValue = SearchTerm?.Trim() ?? "";
+            string searchPattern = "%" + searchValue + "%";
 
             using SqlConnection conn = new SqlConnection(_connectionString);
             conn.Open();
 
-            string query = "SELECT ProductId, ProductName, Category, Price, Stock FROM Products " +
-                "ORDER BY ProductId DESC";
+            string query = @"
+                SELECT ProductId, ProductName, Category, Price, Stock
+                FROM Products
+                WHERE 
+                    @SearchValue = ''
+                    OR ProductName LIKE @SearchPattern
+                    OR Category LIKE @SearchPattern
+                ORDER BY ProductId DESC";
 
             using SqlCommand command = new SqlCommand(query, conn);
+
+            command.Parameters.AddWithValue("@SearchValue", searchValue);
+            command.Parameters.AddWithValue("@SearchPattern", searchPattern);
+
             using SqlDataReader reader = command.ExecuteReader();
 
             while (reader.Read())

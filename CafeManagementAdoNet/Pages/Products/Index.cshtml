@@ -23,6 +23,34 @@
                 <a asp-page="Create" class="cafe-btn cafe-btn-primary">+ Yeni Ürün</a>
             </div>
         </section>
+        <section class="cafe-search-panel">
+            <form method="get" class="cafe-search-form">
+                <div class="cafe-search-box">
+                    <span class="cafe-search-icon">⌕</span>
+                    <input asp-for="SearchTerm"
+                           class="cafe-search-input"
+                           placeholder="Ürün adı veya kategori ara..." />
+                </div>
+
+                <button type="submit" class="cafe-btn cafe-btn-primary">
+                    Ara
+                </button>
+
+                @if (!string.IsNullOrWhiteSpace(Model.SearchTerm))
+                {
+                    <a asp-page="./Index" class="cafe-btn cafe-btn-outline">
+                        Temizle
+                    </a>
+                }
+            </form>
+
+            @if (!string.IsNullOrWhiteSpace(Model.SearchTerm))
+            {
+                <div class="cafe-search-result-text">
+                    “@Model.SearchTerm” araması için @Model.Products.Count sonuç bulundu.
+                </div>
+            }
+        </section>
 
         <section class="cafe-stats">
             <div class="cafe-stat-card">

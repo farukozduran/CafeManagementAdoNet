@@ -15,15 +15,31 @@ namespace CafeManagementAdoNet.Pages.Employees
         }
 
         public List<Employee> Employees { get; set; } =new List<Employee>();
+
+        [BindProperty(SupportsGet = true)]
+        public string? SearchTerm { get; set; }
         public void OnGet()
         {
+            string searchValue = SearchTerm?.Trim() ?? "";
+            string searchPattern = "%" + searchValue + "%";
+
             using SqlConnection conn = new SqlConnection(_connectionString);
             conn.Open();
 
-            string query = "SELECT EmployeeId, FullName, Position, Salary, StartDate FROM Employees " +
-                "ORDER BY EmployeeId DESC";
+            string query = @"
+                SELECT EmployeeId, FullName, Position, Salary, StartDate
+                FROM Employees
+                WHERE 
+                    @SearchValue = ''
+                    OR FullName LIKE @SearchPattern
+                    OR Position LIKE @SearchPattern
+                ORDER BY EmployeeId DESC";
 
             using SqlCommand command = new SqlCommand(query, conn);
+
+            command.Parameters.AddWithValue("@SearchValue", searchValue);
+            command.Parameters.AddWithValue("@SearchPattern", searchPattern);
+
             using SqlDataReader reader = command.ExecuteReader();
 
             while (reader.Read())

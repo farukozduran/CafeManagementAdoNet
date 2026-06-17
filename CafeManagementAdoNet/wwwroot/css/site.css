@@ -763,3 +763,76 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
         min-height: auto;
     }
 }
+
+/* Search Bar */
+
+.cafe-search-panel {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 24px;
+    padding: 18px;
+    margin-bottom: 24px;
+    box-shadow: 0 14px 35px rgba(15, 23, 42, 0.05);
+}
+
+.cafe-search-form {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cafe-search-box {
+    position: relative;
+    flex: 1;
+}
+
+.cafe-search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 17px;
+    pointer-events: none;
+}
+
+.cafe-search-input {
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    border-radius: 999px;
+    padding: 14px 18px 14px 46px;
+    background: #f8fafc;
+    color: #172033;
+    font-weight: 600;
+    outline: none;
+    transition: 0.2s ease;
+}
+
+    .cafe-search-input:focus {
+        background: #ffffff;
+        border-color: #2f5bea;
+        box-shadow: 0 0 0 4px rgba(47, 91, 234, 0.12);
+    }
+
+    .cafe-search-input::placeholder {
+        color: #94a3b8;
+        font-weight: 500;
+    }
+
+.cafe-search-result-text {
+    color: #6b7280;
+    font-size: 14px;
+    margin-top: 12px;
+    padding-left: 4px;
+}
+
+@media (max-width: 768px) {
+    .cafe-search-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+        .cafe-search-form .cafe-btn {
+            width: 100%;
+        }
+}
