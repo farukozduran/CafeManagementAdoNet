@@ -19,3 +19,50 @@ Proje, SQL Server üzerinde `CafeDb` isimli bir veritabanı arayacaktır. SQL Se
 *   **Expenses:** `ExpenseId` (PK, Identity), `ExpenseTitle`, `Amount`, `ExpenseDate`, `Description`
 ### 2. Bağlantı Dizesini (Connection String) Ayarlama
 Proje dizinindeki `appsettings.json` dosyasını açın ve `DefaultConnection` bölümündeki `Server` adını kendi veritabanı sunucunuza göre düzenleyin.
+
+## 📸 Ekran Görüntüleri (Screenshots)
+
+Kafe yönetim sisteminin kullanıcı arayüzüne ve işlem ekranlarına ait görsellere aşağıdan ulaşabilirsiniz:
+
+### 🏠 Ana Sayfa (Genel Bakış)
+![Ana Sayfa](assets/screenshots/anasayfa.png)
+
+---
+
+### 📋 Yönetim ve Listeleme Ekranları
+Kafedeki ürünlerin, çalışanların ve işletme giderlerinin takip edildiği temel listeleme arayüzleri:
+
+<table width="100%">
+  <tr>
+    <td width="33%" align="center">
+      <strong>Ürünler (Products)</strong><br />
+      <img src="assets/screenshots/products.png" alt="Ürünler Listesi" width="100%"/>
+    </td>
+    <td width="33%" align="center">
+      <strong>Çalışanlar (Employees)</strong><br />
+      <img src="assets/screenshots/employees.png" alt="Çalışanlar Listesi" width="100%"/>
+    </td>
+    <td width="33%" align="center">
+      <strong>Giderler (Expenses)</strong><br />
+      <img src="assets/screenshots/expenses.png" alt="Giderler Listesi" width="100%"/>
+    </td>
+  </tr>
+</table>
+
+---
+
+### ⚙️ İşlem ve Raporlama Ekranları
+Sisteme yeni personel ekleme arayüzü ve işletmeye ait genel verilerin sunulduğu raporlama ekranı:
+
+<table width="100%">
+  <tr>
+    <td width="50%" align="center">
+      <strong>Yeni Çalışan Ekle (Add Employee)</strong><br />
+      <img src="assets/screenshots/add_employee.png" alt="Yeni Çalışan Ekleme Formu" width="100%"/>
+    </td>
+    <td width="50%" align="center">
+      <strong>Raporlar (Reports)</strong><br />
+      <img src="assets/screenshots/reports.png" alt="Raporlama Ekranı" width="100%"/>
+    </td>
+  </tr>
+</table>
